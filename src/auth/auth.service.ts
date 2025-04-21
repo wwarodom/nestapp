@@ -61,7 +61,10 @@ export class AuthService {
     
     // generate JWT token
     // payload contains the claims or the data being transferred (id).
-    const payload = { user_id: authuser.id };
+    const payload = { user_id: authuser.id, 
+          email: authuser.email, 
+          username: authuser.username 
+        };
     const token = await this.jwtService.signAsync( payload, { 
       secret : process.env.JWT_SECRET_KEY 
     });
